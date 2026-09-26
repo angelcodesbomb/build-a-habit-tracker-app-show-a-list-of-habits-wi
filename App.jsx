@@ -1,127 +1,89 @@
-import React, { useState, useCallback } from "react";
-import { getAll, insert, update, remove } from "./lib/db.js";
-import HabitItem from "./components/HabitItem.jsx";
-import AddHabitForm from "./components/AddHabitForm.jsx";
+import React, { useState, useEffect } from "react";
+import { getAll, insert, update } from "./lib/db.js";
 
 export default function App() {
-  const [habits, setHabits] = useState(() => getAll());
+  const [habits, setHabits] = useState([]);
+  const [newHabitName, setNewHabitName] = useState("");
 
-  const refresh = useCallback(() => {
-    setHabits(getAll());
+  const today = new Date().toISOString().split("T")[0];
+
+  async function loadHabits() {
+    const data = await getAll("habits");
+    setHabits(data || []);
+  }
+
+  useEffect(() => {
+    loadHabits();
   }, []);
 
-  const handleAdd = useCallback(
-    (name) => {
-      insert({ name, streak: 0 });
-      refresh();
-    },
-    [refresh]
-  );
+  async function handleAdd(e) {
+    e.preventDefault();
+    if (!newHabitName.trim()) return;
+    await insert("habits", {
+      name: newHabitName.trim(),
+      streak: 0,
+      lastCompleted: null,
+    });
+    setNewHabitName("");
+    loadHabits();
+  }
 
-  const handleToggle = useCallback(
-    (id) => {
-      const habit = habits.find((h) => h.id === id);
-      if (!habit) return;
-      const newStreak = habit.streak > 0 ? 0 : habit.streak + 1;
-      update(id, { streak: newStreak });
-      refresh();
-    },
-    [habits, refresh]
-  );
-
-  const handleDelete = useCallback(
-    (id) => {
-      remove(id);
-      refresh();
-    },
-    [refresh]
-  );
-
-  const doneCount = habits.filter((h) => h.streak > 0).length;
-
-  const styles = {
-    page: {
-      minHeight: "100vh",
-      background: "#f9fafb",
-      padding: "24px 16px",
-      fontFamily: "system-ui, -apple-system, sans-serif",
-      color: "#1f2937",
-    },
-    container: {
-      maxWidth: "560px",
-      margin: "0 auto",
-    },
-    header: {
-      marginBottom: "20px",
-    },
-    title: {
-      fontSize: "28px",
-      fontWeight: 700,
-      margin: "0 0 6px 0",
-      color: "#111827",
-    },
-    subtitle: {
-      fontSize: "15px",
-      color: "#6b7280",
-      margin: 0,
-    },
-    progress: {
-      fontSize: "14px",
-      color: "#374151",
-      background: "#ffffff",
-      border: "1px solid #e5e7eb",
-      borderRadius: "8px",
-      padding: "10px 14px",
-      marginBottom: "16px",
-    },
-    list: {
-      listStyle: "none",
-      margin: 0,
-      padding: 0,
-      background: "#ffffff",
-      border: "1px solid #e5e7eb",
-      borderRadius: "10px",
-      overflow: "hidden",
-    },
-    empty: {
-      padding: "32px 16px",
-      textAlign: "center",
-      color: "#9ca3af",
-      fontSize: "15px",
-    },
-  };
+  async function toggleHabit(id, currentStreak, lastCompleted) {
+    const isToday = lastCompleted === today;
+    const newStreak = isToday ? currentStreak : currentStreak + 1;
+    await update("habits", id, {
+      streak: newStreak,
+      lastCompleted: today,
+    });
+    loadHabits();
+  }
 
   return (
-    <div style={styles.page}>
-      <main style={styles.container}>
-        <header style={styles.header}>
-          <h1 style={styles.title}>Habit Tracker</h1>
-          <p style={styles.subtitle}>Build better habits, one day at a time.</p>
-        </header>
-
-        <div style={styles.progress} role="status">
-          {habits.length === 0
-            ? "No habits yet. Add your first one below!"
-            : doneCount + " of " + habits.length + " habits completed today."}
-        </div>
-
-        <AddHabitForm onAdd={handleAdd} />
-
-        {habits.length === 0 ? (
-          <div style={styles.empty}>Your list is empty. Start by adding a habit above.</div>
-        ) : (
-          <ul style={styles.list} aria-label="List of habits">
-            {habits.map((habit) => (
-              <HabitItem
-                key={habit.id}
-                habit={habit}
-                onToggle={handleToggle}
-                onDelete={handleDelete}
+    <main style={{ padding: "1rem", fontFamily: "Arial, sans-serif" }}>
+      <h1>Habit Tracker</h1>
+      <form onSubmit={handleAdd} style={{ marginBottom: "1rem" }}>
+        <label htmlFor="new-habit" style={{ marginRight: "0.5rem" }}>
+          New Habit:
+        </label>
+        <input
+          id="new-habit"
+          type="text"
+          value={newHabitName}
+          onChange={(e) => setNewHabitName(e.target.value)}
+          placeholder="Enter habit name"
+          aria-label="New habit name"
+          style={{ marginRight: "0.5rem" }}
+        />
+        <button type="submit" aria-label="Add habit">
+          Add
+        </button>
+      </form>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {habits.map((habit) => {
+          const isCompletedToday = habit.lastCompleted === today;
+          return (
+            <li
+              key={habit.id}
+              style={{ marginBottom: "0.5rem", display: "flex", alignItems: "center" }}
+            >
+              <input
+                type="checkbox"
+                checked={isCompletedToday}
+                onChange={() =>
+                  toggleHabit(habit.id, habit.streak, habit.lastCompleted)
+                }
+                aria-label={
+                  `Mark ${habit.name} as ${isCompletedToday ? "not" : "completed"} today`
+                }
+                style={{ marginRight: "0.5rem" }}
               />
-            ))}
-          </ul>
-        )}
-      </main>
-    </div>
+              <span style={{ flexGrow: 1 }}>
+                {habit.name} (Streak: {habit.streak})
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </main>
   );
 }

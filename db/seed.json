@@ -1,14 +1,14 @@
 {
   "habits": [
-    { "id": "habit_1", "name": "Drink water", "streak": 5, "lastCompleted": "2023-09-20" },
-    { "id": "habit_2", "name": "Morning meditation", "streak": 12, "lastCompleted": "2023-09-21" },
-    { "id": "habit_3", "name": "Read a book", "streak": 8, "lastCompleted": "2023-09-19" },
-    { "id": "habit_4", "name": "Exercise", "streak": 3, "lastCompleted": "2023-09-22" },
-    { "id": "habit_5", "name": "Write journal", "streak": 10, "lastCompleted": "2023-09-21" },
-    { "id": "habit_6", "name": "Learn a language", "streak": 4, "lastCompleted": "2023-09-20" },
-    { "id": "habit_7", "name": "Plan the day", "streak": 7, "lastCompleted": "2023-09-22" },
-    { "id": "habit_8", "name": "No sugar", "streak": 2, "lastCompleted": "2023-09-18" },
-    { "id": "habit_9", "name": "Walk 10k steps", "streak": 6, "lastCompleted": "2023-09-21" },
-    { "id": "habit_10", "name": "Sleep before 11pm", "streak": 9, "lastCompleted": "2023-09-20" }
+    { "id": "h1", "name": "Drink water", "streak": 5, "lastCompleted": "2023-09-25" },
+    { "id": "h2", "name": "Morning meditation", "streak": 12, "lastCompleted": "2023-09-26" },
+    { "id": "h3", "name": "Read 20 pages", "streak": 3, "lastCompleted": "2023-09-24" },
+    { "id": "h4", "name": "Exercise", "streak": 7, "lastCompleted": "2023-09-26" },
+    { "id": "h5", "name": "Write journal", "streak": 10, "lastCompleted": "2023-09-25" },
+    { "id": "h6", "name": "Learn a language", "streak": 2, "lastCompleted": "2023-09-23" },
+    { "id": "h7", "name": "No sugar", "streak": 15, "lastCompleted": "2023-09-26" },
+    { "id": "h8", "name": "Sleep 8 hours", "streak": 4, "lastCompleted": "2023-09-25" },
+    { "id": "h9", "name": "Practice guitar", "streak": 1, "lastCompleted": "2023-09-22" },
+    { "id": "h10", "name": "Plan tomorrow", "streak": 8, "lastCompleted": "2023-09-26" }
   ]
 }
