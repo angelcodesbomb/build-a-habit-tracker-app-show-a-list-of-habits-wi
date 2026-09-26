@@ -1,0 +1,13 @@
+{
+  "habits": [
+    { "id": "h1", "name": "Drink Water", "streak": 5 },
+    { "id": "h2", "name": "Morning Jog", "streak": 12 },
+    { "id": "h3", "name": "Read a Book", "streak": 8 },
+    { "id": "h4", "name": "Meditate", "streak": 3 },
+    { "id": "h5", "name": "Write Journal", "streak": 7 },
+    { "id": "h6", "name": "Learn Spanish", "streak": 2 },
+    { "id": "h7", "name": "No Sugar", "streak": 14 },
+    { "id": "h8", "name": "Sleep 8h", "streak": 9 },
+    { "id": "h9", "name": "Practice Guitar", "streak": 4 }
+  ]
+}
