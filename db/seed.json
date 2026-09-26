@@ -1,14 +1,94 @@
 {
   "habits": [
-    { "id": "h1", "name": "Drink water", "streak": 5, "lastCompleted": "2023-09-25" },
-    { "id": "h2", "name": "Morning meditation", "streak": 12, "lastCompleted": "2023-09-26" },
-    { "id": "h3", "name": "Read 20 pages", "streak": 3, "lastCompleted": "2023-09-24" },
-    { "id": "h4", "name": "Exercise", "streak": 7, "lastCompleted": "2023-09-26" },
-    { "id": "h5", "name": "Write journal", "streak": 10, "lastCompleted": "2023-09-25" },
-    { "id": "h6", "name": "Learn a language", "streak": 2, "lastCompleted": "2023-09-23" },
-    { "id": "h7", "name": "No sugar", "streak": 15, "lastCompleted": "2023-09-26" },
-    { "id": "h8", "name": "Sleep 8 hours", "streak": 4, "lastCompleted": "2023-09-25" },
-    { "id": "h9", "name": "Practice guitar", "streak": 1, "lastCompleted": "2023-09-22" },
-    { "id": "h10", "name": "Plan tomorrow", "streak": 8, "lastCompleted": "2023-09-26" }
+    {
+      "id": "h1",
+      "name": "Morning Yoga",
+      "description": "15‑minute flow to start the day",
+      "createdAt": "2024-01-05T08:00:00.000Z",
+      "streak": 4,
+      "lastCompleted": "2024-09-25T07:30:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h2",
+      "name": "Read Fiction",
+      "description": "Read at least 20 pages of a novel",
+      "createdAt": "2024-02-12T10:15:00.000Z",
+      "streak": 7,
+      "lastCompleted": "2024-09-25T20:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h3",
+      "name": "Drink Water",
+      "description": "Consume 8 glasses of water",
+      "createdAt": "2024-03-01T09:00:00.000Z",
+      "streak": 12,
+      "lastCompleted": "2024-09-25T12:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h4",
+      "name": "Evening Walk",
+      "description": "30‑minute walk after dinner",
+      "createdAt": "2024-04-20T18:30:00.000Z",
+      "streak": 2,
+      "lastCompleted": "2024-09-24T19:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h5",
+      "name": "Meditation",
+      "description": "10 minutes of mindfulness",
+      "createdAt": "2024-05-15T07:45:00.000Z",
+      "streak": 9,
+      "lastCompleted": "2024-09-25T07:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h6",
+      "name": "Learn Japanese",
+      "description": "Study 5 new kanji characters",
+      "createdAt": "2024-06-10T14:00:00.000Z",
+      "streak": 5,
+      "lastCompleted": "2024-09-23T14:30:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h7",
+      "name": "Plant Care",
+      "description": "Water indoor plants",
+      "createdAt": "2024-07-01T09:30:00.000Z",
+      "streak": 3,
+      "lastCompleted": "2024-09-25T09:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h8",
+      "name": "Sketch Daily",
+      "description": "Draw a quick sketch",
+      "createdAt": "2024-08-05T16:00:00.000Z",
+      "streak": 6,
+      "lastCompleted": "2024-09-24T16:45:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h9",
+      "name": "No Sugar",
+      "description": "Avoid added sugars for the day",
+      "createdAt": "2024-09-01T00:00:00.000Z",
+      "streak": 1,
+      "lastCompleted": "2024-09-25T23:59:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": "h10",
+      "name": "Journal",
+      "description": "Write 3 sentences about the day",
+      "createdAt": "2024-09-10T20:00:00.000Z",
+      "streak": 8,
+      "lastCompleted": "2024-09-25T21:00:00.000Z",
+      "isActive": true
+    }
   ]
 }
