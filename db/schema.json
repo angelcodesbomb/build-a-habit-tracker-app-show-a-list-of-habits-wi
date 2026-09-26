@@ -4,11 +4,8 @@
       "fields": {
         "id": { "type": "id", "required": true },
         "name": { "type": "string", "required": true },
-        "description": { "type": "string", "required": true },
-        "createdAt": { "type": "date", "required": true },
         "streak": { "type": "number", "required": true },
-        "lastCompleted": { "type": "date", "required": true },
-        "isActive": { "type": "boolean", "required": true }
+        "lastCompleted": { "type": "date", "required": false }
       },
       "relations": {}
     }
